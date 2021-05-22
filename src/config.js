@@ -3,7 +3,7 @@ import { timemap } from './lib'
 export default {
   gsheets: [{
     name: 'gvp',
-    path: process.env.GSHEET,
+    path: '1nNwf-HMnyVPGcHnIXd86dD5uOcFBgSh4oNWo-IF_v3M',
     tabs: timemap.prefixedTabs(false, false, [
       {
         name: 'eventos',

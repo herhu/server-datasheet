@@ -4,10 +4,9 @@
   "description": "Starter project for an ES6 RESTful Express API",
   "main": "dist",
   "scripts": {
-    "babel-node": "babel-node -r dotenv/config src",
-    "dev": "cross-env NODE_ENV=development nodemon -w src --exec npm run babel-node",
+    "dev": "cross-env NODE_ENV=development nodemon -w src --exec \"babel-node src\"",
     "build": "cross-env NODE_ENV=production npx babel src -d dist",
-    "start": "node -r dotenv/config dist",
+    "start": "node dist",
     "lint": "standard \"src/**/*.js\" \"test/**/*.js\"",
     "test-watch": "ava --watch",
     "test": "ava --verbose",

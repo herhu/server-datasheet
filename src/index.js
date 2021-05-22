@@ -4,6 +4,9 @@ import express from 'express'
 import initialize from './initialize'
 import middleware from './middleware'
 import api from './api'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const hbs = require('express-handlebars')
 
