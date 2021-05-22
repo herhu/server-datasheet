@@ -33,7 +33,7 @@ class StoreJson {
   }
 
   _parseEvents(data) {
-    return data
+    const res = data
       .filter((row) => row.aprobado === 'TRUE')
       .map((row) => {
         const ret = {
@@ -45,12 +45,14 @@ class StoreJson {
 
         ret.historia = row.historia !== 'N/A' ? row.historia : '';
         // ret.categories = row.categorias !== 'N/A' ? row.categorias.filter((c) => c !== 'N/A') : [];
-        ret.category = row.categorias.find((cat) => cat !== 'N/A');
+        // ret.category = row.categorias.find((cat) => cat !== 'N/A');
+        ret.category = row.categoria;
         ret.videos = row.videos;
         ret.fuente = row.fuente;
         ret.nombre_victima = row.nombre_victima;
         ret.ubicacion = row.ubicacion;
-
+        ret.filters = row.subcategorias;
+        
         if (row.geo.length) {
           const coords = this._extractCoordsFromUrl(row.geo);
           ret.latitude = coords[0];
@@ -59,13 +61,14 @@ class StoreJson {
 
         return ret;
       });
+      return res;
   }
 
   _parseCategories(data) {
     const ret = {};
     // const cais = data.find((column) => column.name === 'cai').items;
     // const geoCais = data.find((column) => column.name === 'geo_cai').items;
-    const categories = data.find((column) => column.name === 'categorias').items;
+    const categories = data.find((column) => column.name === 'categoria').items;
 
     // ret.cais = cais.map((name, i) => {
     //   if (geoCais[i]) {
