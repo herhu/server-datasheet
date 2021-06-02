@@ -48,6 +48,7 @@ class StoreJson {
         // ret.category = row.categorias.find((cat) => cat !== 'N/A');
         ret.category = row.categoria;
         ret.videos = row.videos;
+        ret.imgs = row.imgs;
         ret.fuente = row.fuente;
         ret.nombre_victima = row.nombre_victima;
         ret.ubicacion = row.ubicacion;
