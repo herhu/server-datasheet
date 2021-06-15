@@ -1,6 +1,7 @@
 import { version } from '../../package.json'
 import { Router } from 'express'
 import copy from '../copy/en'
+import GeoJSON from 'geojson'
 
 export default ({ config, controller }) => {
   let api = Router()
@@ -34,6 +35,16 @@ export default ({ config, controller }) => {
         res.status(404)
           .send({ error: err.message, err })
       })
+  })
+
+  api.get('/geojson', (req, res) => {
+    controller
+      .retrieve('gvp', 'eventos', 'deeprows')
+      .then(data => res.json(GeoJSON.parse(data, {Point: ['latitude', 'longitude']})))
+      .catch(err =>
+        res.status(err.status || 404)
+          .send({ error: err.message })
+      )
   })
 
   api.get('/:sheet/:tab/:resource/:frag', (req, res) => {
