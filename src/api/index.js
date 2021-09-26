@@ -4,7 +4,7 @@ import copy from '../copy/en'
 import GeoJSON from 'geojson'
 
 export default ({ config, controller }) => {
-  let api = Router()
+  const api = Router()
 
   api.get('/', (req, res) => {
     res.json({
@@ -40,7 +40,7 @@ export default ({ config, controller }) => {
   api.get('/geojson', (req, res) => {
     controller
       .retrieve('gvp', 'eventos', 'deeprows')
-      .then(data => res.json(GeoJSON.parse(data, {Point: ['latitude', 'longitude']})))
+      .then(data => res.json(GeoJSON.parse(data, { Point: ['latitude', 'longitude'] })))
       .catch(err =>
         res.status(err.status || 404)
           .send({ error: err.message })

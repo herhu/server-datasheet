@@ -2,7 +2,6 @@ import http from 'http'
 import path from 'path'
 import express from 'express'
 import initialize from './initialize'
-import middleware from './middleware'
 import api from './api'
 import dotenv from 'dotenv'
 
@@ -10,7 +9,7 @@ dotenv.config()
 
 const hbs = require('express-handlebars')
 
-let app = express()
+const app = express()
 app.server = http.createServer(app)
 app.engine('.hbs', hbs({
   extname: '.hbs',
@@ -28,12 +27,6 @@ if (process.env.NODE_ENV === 'development') {
 const config = process.env
 
 initialize(controller => {
-  app.use(
-    middleware({
-      config,
-      controller
-    })
-  )
   app.use(
     '/api',
     api({

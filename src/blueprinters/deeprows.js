@@ -31,7 +31,7 @@ export default (data) => {
       if (labelPrefix in structure) {
         structure[labelPrefix].push(label)
       } else {
-        structure[labelPrefix] = [ label ]
+        structure[labelPrefix] = [label]
       }
     }
   })

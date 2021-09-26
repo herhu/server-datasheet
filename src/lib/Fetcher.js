@@ -53,7 +53,7 @@ class Fetcher {
         const allParts = allUrls.reduce((acc, url) => {
           if (url.startsWith(this.id)) {
             const parts = url.split('/')
-            let duplicateTab = acc.reduce((tabFound, p) => {
+            const duplicateTab = acc.reduce((tabFound, p) => {
               return tabFound || p[0] === parts[1]
             }, false)
             if (duplicateTab) {
@@ -63,7 +63,7 @@ class Fetcher {
                 }
               })
             } else {
-              acc.push([ parts[1], [ parts[2] ] ])
+              acc.push([parts[1], [parts[2]]])
             }
           }
           return acc
@@ -246,8 +246,8 @@ class LocalFetcher extends Fetcher {
 }
 
 export default {
-  'gsheets': GsheetFetcher,
-  'xlsx': LocalFetcher,
-  'ods': LocalFetcher,
-  'local': LocalFetcher
+  gsheets: GsheetFetcher,
+  xlsx: LocalFetcher,
+  ods: LocalFetcher,
+  local: LocalFetcher
 }

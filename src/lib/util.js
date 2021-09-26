@@ -46,7 +46,7 @@ export const fmtObj = R.curry(
 
 /* search for object with key in array. Return index if exists, or -1 if not */
 export const idxSearcher = R.curry((attrName, searchValue, myArray) => {
-  for (var i = 0; i < myArray.length; i++) {
+  for (let i = 0; i < myArray.length; i++) {
     if (myArray[i][attrName] === searchValue) {
       return i
     }

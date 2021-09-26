@@ -37,8 +37,8 @@ test('rows blueprinter', t => {
 
 test('deeprows blueprinter', t => {
   const expected = [
-    { 'hs': [1, 2, 3] },
-    { 'hs': [4, 5, 6] }
+    { hs: [1, 2, 3] },
+    { hs: [4, 5, 6] }
   ]
   const actual = deeprows(egInput1)
   t.deepEqual(expected, actual)

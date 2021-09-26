@@ -1,6 +1,6 @@
 import test from 'ava'
-import fetch from 'node-fetch'
 import childProcess from 'child_process'
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args))
 
 const SERVER_LAUNCH_WAIT_TIME = 10 * 1000
 const SERVER_ROOT = 'http://localhost:4040'
