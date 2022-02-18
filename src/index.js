@@ -28,7 +28,7 @@ const config = process.env
 
 initialize(controller => {
   app.use(
-    '/api',
+    '/v1',
     api({
       config,
       controller
