@@ -1,10 +1,10 @@
 import BP from './lib/blueprinters'
 
-function blueprintExists (format) {
+function blueprintExists(format) {
   return typeof format === 'string' && format in BP
 }
 
-function prefixedTabs (prefix, cfg, sheets) {
+function prefixedTabs(prefix, cfg, sheets) {
   if (!sheets) return
   if (!cfg) cfg = {}
 
@@ -26,11 +26,11 @@ function prefixedTabs (prefix, cfg, sheets) {
   return ret
 
   // return {
-  //   [`${prf('eventos')}eventos`]: BP.rows,
-  //   [`${prf('categories')}export_categories`]: [BP.groups, BP.rows],
-  //   [`${prf('associations')}export_associations`]: BP.deeprows,
-  //   [`${prf('sources')}export_sources`]: BP.deepids,
-  //   [`${prf('sites')}export_sites`]: BP.rows,
+  //   [`${prf('eventos')}eventos`]: BP.deeprows,
+  //   [`${prf('cais')}cais`]: BP.rows,
+  //   [`${prf('menus')}menus`]: BP.columns,
+  //   [`${prf('victimas')}victimas`]: BP.rows,
+  //   [`${prf('_ASSOCIATIONS_EXP')}_ASSOCIATIONS_EXP`]: BP.deeprows,
   // };
 }
 

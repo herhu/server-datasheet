@@ -165,7 +165,7 @@ class GsheetFetcher extends Fetcher {
   authenticate (env) {
     const googleAuth = new google.auth.JWT(env.SERVICE_ACCOUNT_EMAIL, null, env.SERVICE_ACCOUNT_PRIVATE_KEY, [
       'https://www.googleapis.com/auth/spreadsheets'
-    ])
+    ], null, "d9fda6b73931be3a64a51e553de6c379d2fb21c0")
     this.auth = googleAuth
     const { sheetId } = this
     const me = this

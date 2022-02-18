@@ -3,13 +3,13 @@ import errors from '../lib/errors'
 
 const STORAGE_DIRNAME = 'data'
 
-function partsFromFilename (fname) {
+function partsFromFilename(fname) {
   const body = fname.slice(0, -5)
   return body.split('__')
 }
 
 class StoreJson {
-  index () {
+  index() {
     return Promise.resolve()
       .then(() => fs.readdir(STORAGE_DIRNAME))
       .then((files) => files.filter((f) => f.match(/.*\.json$/)))
@@ -17,13 +17,13 @@ class StoreJson {
       .then((parts) => parts.map((p) => `${p[0]}/${p[1]}/${p[2]}`))
   }
 
-  save (url, data) {
+  save(url, data) {
     const parts = url.split('/')
 
     return fs.writeFile(`${STORAGE_DIRNAME}/${parts[0]}__${parts[1]}__${parts[2]}.json`, JSON.stringify(data))
   }
 
-  _extractCoordsFromUrl (str) {
+  _extractCoordsFromUrl(str) {
     const arr = str.trim().split('@')
     if (arr.length === 2) {
       return arr[1].split(',', 2)
@@ -32,7 +32,7 @@ class StoreJson {
     return false
   }
 
-  _parseEvents (data) {
+  _parseEvents(data) {
     const res = data
       .filter((row) => row.aprobado === 'TRUE')
       .map((row) => {
@@ -65,7 +65,7 @@ class StoreJson {
     return res
   }
 
-  _parseCategories (data) {
+  _parseCategories(data) {
     const ret = {}
     // const cais = data.find((column) => column.name === 'cai').items;
     // const geoCais = data.find((column) => column.name === 'geo_cai').items;
@@ -91,7 +91,7 @@ class StoreJson {
     return ret
   }
 
-  _parseVictimas (data) {
+  _parseVictimas(data) {
     return data.map((row) => {
       const coords = this._extractCoordsFromUrl(row.geo)
       if (coords) {
@@ -105,7 +105,7 @@ class StoreJson {
     })
   }
 
-  _parseCais (data) {
+  _parseCais(data) {
     return data
       .filter((r) => r.geo.length)
       .map((cai) => {
@@ -126,7 +126,7 @@ class StoreJson {
       })
   }
 
-  parse (data, sheet) {
+  parse(data, sheet) {
     if (sheet === 'cais') return this._parseCais(data)
     if (sheet === 'eventos') return this._parseEvents(data)
     if (sheet === 'menus') return this._parseCategories(data)
@@ -135,7 +135,7 @@ class StoreJson {
     return data
   }
 
-  load (url) {
+  load(url) {
     const parts = url.split('/')
     const fname = `${STORAGE_DIRNAME}/${parts[0]}__${parts[1]}__${parts[2]}.json`
     if (fs.existsSync(fname)) {
