@@ -77,7 +77,7 @@ class Fetcher {
               parts[0],
               parts[1]
             )
-            bp.urls = Object.keys(bp.resources).map(r => `/api/${bp.sheet.name}/${bp.name}/${r}`)
+            bp.urls = Object.keys(bp.resources).map(r => `/v1/${bp.sheet.name}/${bp.name}/${r}`)
             return bp
           })
       })
